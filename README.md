@@ -1,48 +1,27 @@
 # Blastar
 
-A simple space shooter game inspired by the classic arcade games. Blast your way through waves of enemies and achieve the highest score!
+Простой космический шутер, вдохновленный классической аркадной игрой Blastar. Пробейтесь через волны врагов и наберите максимальное количество очков!
 
 ![Blastar Game Screenshot](/preview.png)
 
-## Play Now
+## Играйте прямо сейчас!
 
-You can play the game online at: [Blastar Game](https://blastar.srikanthnani.com/)
+Вы можете играть в игру онлайн на Deno Deploy
 
-## Game Controls
+## Управление игрой
 
-- **Left Arrow**: Move left
-- **Right Arrow**: Move right
-- **Spacebar**: Shoot
+- **Стрелка влево**: Двигаться влево
+- **Стрелка вправо**: Двигаться вправо
+- **Пробел**: Стрелять
 
-## Features
+## Установка
 
-- Simple and addictive gameplay
-- Particle effects for explosions
-- Sound effects for shooting and explosions
-- Score tracking
-- Game over screen with restart option
-
-## Installation
-
-Clone the repository:
+Клонируйте репозиторий:
 
 ```
-git clone https://github.com/iamsrikanthnani/blastar.git
-cd blastar
+git clone https://github.com/StarLord1Art/BlastarJS.git
 ```
 
-open `index.html` in any browser
+Откройте `index.html` в любом браузере
 
-## License
-
-MIT
-
-## Credits
-
-- Game developed by [Srikanth Nani](https://github.com/iamsrikanthnani)
-- Game created with [Grok-3](https://grok.x.ai/) using a single prompt
-- Sound effects from [myinstants.com](https://www.myinstants.com/)
-
----
-
-### Happy blasting 🚀
+### Наслаждайтесь игрой! 🚀
