@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+    <title>Blastar</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li id="about">Об игре</li>
+          <li id="play">Играть</li>
+          <li id="results">Результаты</li>
+        </ul>
+      </nav>
+    </header>
+    <div id="content">
+      <div id="game-description">
+        <h1>Описание игры</h1>
+        <p>Простой космический шутер, вдохновленный классической аркадной игрой Blastar. Защитите Землю! Спасите Землю от
+        инопланетного вторжения! Пробейтесь через волны врагов и наберите максимальное количество очков! 
+        <a href="https://github.com/iamsrikanthnani/blastar?ysclid=ma6o3amat7712096159" target="_blank">Ссылка на первоисточник</a></p>
+        <h1>Управление игрой</h1>
+        <ol>
+          <li>Стрелка влево: Двигаться влево</li>
+          <li>Стрелка вправо: Двигаться вправо</li>
+          <li>Пробел: стрелять</li>
+        </ol>
+      </div>
+
+      <div id="game-container">
+        <script src="blastar.js"></script>
+      </div>
+
+      <div id="game-results">
+        <h2>Таблица рекордов</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Игрок</th>
+              <th>Очки</th>
+              <th>Дата</th>
+            </tr>
+          </thead>
+          <tbody id="results-table"></tbody>
+        </table>
+      </div>
+    </div>
+    <footer class="footer-bottom">
+      <p>© 2025 Космический Шутер | Все права защищены</p>
+      <p class="stars">✦ ✧ ✦ ✧ ✦ ✧ ✦</p>
+    </footer>
+
+    <script>
+      const aboutBtn = document.getElementById("about")
+      const playBtn = document.getElementById("play")
+      const resultsBtn = document.getElementById("results")
+
+      const gameDescription = document.getElementById('game-description');
+      const gameArea = document.getElementById('game-container');
+      const gameResults = document.getElementById('game-results');
+
+      aboutBtn.addEventListener('click', () => {
+        gameDescription.style.display = 'block';
+        gameArea.style.display = 'none';
+        gameResults.style.display = 'none';
+      });
+
+      playBtn.addEventListener('click', () => {
+        gameDescription.style.display = 'none';
+        gameArea.style.display = 'block';
+        gameResults.style.display = 'none';
+      });
+
+      resultsBtn.addEventListener('click', () => {
+        gameDescription.style.display = 'none';
+        gameArea.style.display = 'none';
+        gameResults.style.display = 'block';
+      });
+
+      gameDescription.style.display = 'block';
+      gameArea.style.display = 'none';
+      gameResults.style.display = 'none';
+    </script>
+  </body>
+</html>
