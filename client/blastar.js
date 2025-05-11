@@ -699,6 +699,8 @@ function createBlastar() {
     maxEnemies: 5,
     lastMaxEnemiesUpdate: Date.now(),
     gameStarted: false,
+    userNameAsked: false,
+    userName: "",
   };
 
   try {
@@ -773,7 +775,7 @@ function setupUI(state) {
   state.muteButton.textContent = "Mute";
   state.muteButton.style.position = "absolute";
   state.muteButton.style.right = "10px";
-  state.muteButton.style.bottom = "10px";
+  state.muteButton.style.bottom = "100px";
   state.muteButton.style.padding = "5px 10px";
   document.getElementById("game-container").appendChild(state.muteButton);
   state.muteButton.addEventListener("click", () => {
@@ -818,6 +820,8 @@ function resetGame(state) {
   state.screenShake = 0;
   state.maxEnemies = 5;
   state.lastMaxEnemiesUpdate = Date.now();
+  state.userNameAsked = false;
+  state.userName = "";
 }
 
 function gameLoop(state) {
@@ -1150,6 +1154,41 @@ function gameLoop(state) {
     const allMotherShipsDestroyed = state.motherships.every(
       (m) => m.health <= 0
     );
+
+    if (!state.userNameAsked) {
+      state.userName = prompt(
+        allMotherShipsDestroyed
+          ? "Поздравляем! Вы спасли Землю! Введите Ваше имя:"
+          : "Игра окончена. Введите Ваше имя для сохранения результата:"
+      );
+      state.userNameAsked = true;
+
+      console.log(state.userName);
+      console.log(state.score);
+
+      fetch("https://blastarjs-70.deno.dev/api/record", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: state.userName,
+          score: state.score,
+          date: Date.now(),
+        }),
+      })
+        .then((res) => {
+          if (res.status === 201) {
+            res.text().then((data) => {
+              console.log(data);
+            });
+          } else {
+            console.log("Что-то пошло не так");
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+
     state.ctx.fillStyle = allMotherShipsDestroyed ? "green" : "white";
     state.ctx.font = "48px Arial";
     state.ctx.textAlign = "center";
