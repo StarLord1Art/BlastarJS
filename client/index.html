@@ -79,6 +79,33 @@
         gameDescription.style.display = 'none';
         gameArea.style.display = 'none';
         gameResults.style.display = 'block';
+
+        fetch("https://blastarjs-70.deno.dev/api/records", {
+          method: "GET",
+        }).then(res => {
+          if (res.status === 200) {
+            res.json().then(data => {
+              console.log(data);
+
+              const tableBody = document.getElementById('results-table');
+              tableBody.innerHTML = '';
+
+              data.forEach(element => {
+                if (Object.keys(element).length > 0) {
+                  const row = document.createElement('tr');
+                  row.innerHTML = `
+                    <td>${element.name}</td>
+                    <td>${element.score}</td>
+                    <td>${new Date(element.date).toLocaleString()}</td>
+                  `;
+                  tableBody.appendChild(row);
+                }
+              });
+            })
+          } else {
+            console.log("Что-то пошло не так");
+          }
+        }).catch(error => console.log(error))
       });
 
       gameDescription.style.display = 'block';

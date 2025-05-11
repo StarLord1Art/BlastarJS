@@ -22,16 +22,15 @@ serve(async (req) => {
     }
 
     if (req.method === "GET" && url.pathname === "/api/records") {
-        // const param1 = url.searchParams.get("param1");
-        // const param2 = Number(url.searchParams.get("param2"));
-
-        const data:[{}] = [{}]
+        const data: any[] = [];
 
         for await (const entry of kv.list({ prefix: ["records"] }, { limit: 100 })) {
-            data.push(entry.value)
+            data.push(entry.value);
         }
+        data.sort((a, b) => b.score - a.score || a.date - b.date)
 
         return new Response(JSON.stringify(data), {
+            status: 200,
             headers: {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
