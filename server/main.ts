@@ -41,7 +41,7 @@ serve(async (req) => {
     }
 
     return serveDir(req, {
-        fsRoot: ".",
+        fsRoot: "client",
         urlRoot: "",
         showDirListing: false,
         enableCors: true,

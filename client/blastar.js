@@ -1,7 +1,7 @@
 // blastar.js
 
 const CANVAS_MARGIN = 100;
-const CANVAS_WIDTH = window.innerWidth - 5 * CANVAS_MARGIN;
+const CANVAS_WIDTH = window.innerWidth - 4 * CANVAS_MARGIN;
 const CANVAS_HEIGHT = window.innerHeight - 2 * CANVAS_MARGIN;
 const GRAVITY = 0.05;
 
@@ -739,10 +739,10 @@ function setupControls(state) {
 }
 
 function setupUI(state) {
-  state.restartButton.textContent = "Restart";
+  state.restartButton.textContent = "Играть ещё раз";
   state.restartButton.style.display = "none";
   state.restartButton.style.position = "absolute";
-  state.restartButton.style.bottom = "120px";
+  state.restartButton.style.bottom = "140px";
   state.restartButton.style.padding = "10px 20px";
   state.restartButton.style.marginLeft = "570px";
   state.restartButton.style.fontSize = "20px";
@@ -753,10 +753,10 @@ function setupUI(state) {
   state.restartButton.addEventListener("click", () => showStartScreen(state));
   document.getElementById("game-container").appendChild(state.restartButton);
 
-  state.startButton.textContent = "Start";
+  state.startButton.textContent = "Старт";
   state.startButton.style.position = "absolute";
   state.startButton.style.bottom = "140px";
-  state.startButton.style.marginLeft = "570px";
+  state.startButton.style.marginLeft = "615px";
   state.startButton.style.padding = "10px 20px";
   state.startButton.style.fontSize = "20px";
   state.startButton.style.backgroundColor = "white";
@@ -830,18 +830,18 @@ function gameLoop(state) {
     state.ctx.font = "32px Arial";
     state.ctx.textAlign = "center";
     state.ctx.fillText(
-      "Defend Earth!",
+      "Защитите Землю!",
       CANVAS_WIDTH / 2,
       CANVAS_HEIGHT / 2 - 60
     );
     state.ctx.font = "24px Arial";
     state.ctx.fillText(
-      "Save Earth from the alien invasion!",
+      "Спасите Землю от инопланетного вторжения!",
       CANVAS_WIDTH / 2,
       CANVAS_HEIGHT / 2 - 20
     );
     state.ctx.fillText(
-      "Press Start to begin",
+      "Нажмите Старт чтобы начать",
       CANVAS_WIDTH / 2,
       CANVAS_HEIGHT / 2 + 20
     );
@@ -872,11 +872,11 @@ function gameLoop(state) {
     state.ctx.fillStyle = "white";
     state.ctx.font = "12px Arial";
     state.ctx.textAlign = "left";
-    state.ctx.fillText("< Move Left", 10, CANVAS_HEIGHT - 50);
-    state.ctx.fillText("> Move Right", 10, CANVAS_HEIGHT - 30);
-    state.ctx.fillText("Space: Shoot", 10, CANVAS_HEIGHT - 10);
+    state.ctx.fillText("< Двигаться влево", 10, CANVAS_HEIGHT - 50);
+    state.ctx.fillText("> Двигаться вправо", 10, CANVAS_HEIGHT - 30);
+    state.ctx.fillText("Пробел: Стрелять", 10, CANVAS_HEIGHT - 10);
     state.ctx.fillText(
-      "Enter: Restart (when game over)",
+      "Enter: Перезапустить игру (когда игра окончена)",
       10,
       CANVAS_HEIGHT - 70
     );
@@ -893,29 +893,41 @@ function gameLoop(state) {
     state.ctx.textAlign = "left";
     let nextMessageY = 60 + state.player.activePowerUps.length * 20;
     if (!state.powerUpsActivated.triple) {
-      state.ctx.fillText("Score 100 to activate Triple Shot", 10, nextMessageY);
+      state.ctx.fillText(
+        "Наберите 100 очков, чтобы активировать х3 Выстрел",
+        10,
+        nextMessageY
+      );
     } else if (!state.powerUpsActivated.quintuple) {
       state.ctx.fillText(
-        "Score 500 to activate Quintuple Shot + Shield",
+        "Наберите 500 очков, чтобы активировать х5 Выстрел + Щит",
         10,
         nextMessageY
       );
     } else if (!state.powerUpsActivated.speed) {
       state.ctx.fillText(
-        "Score 1000 to activate Speed Boost",
+        "Наберите 1000 очков, чтобы активировать Ускорение",
         10,
         nextMessageY
       );
     } else if (!state.powerUpsActivated.shield) {
-      state.ctx.fillText("Score 1500 to activate Shield", 10, nextMessageY);
+      state.ctx.fillText(
+        "Наберите 1500 очков, чтобы активировать Щит",
+        10,
+        nextMessageY
+      );
     } else if (!state.powerUpsActivated.invincible) {
       state.ctx.fillText(
-        "Score 2000 to activate Invincibility",
+        "Наберите 2000 очков, чтобы активировать Неуязвимость",
         10,
         nextMessageY
       );
     } else if (!state.powerUpsActivated.rapidFire) {
-      state.ctx.fillText("Score 2500 to activate Rapid Fire", 10, nextMessageY);
+      state.ctx.fillText(
+        "Наберите 2500 очков, чтобы активировать Быстрый Огонь",
+        10,
+        nextMessageY
+      );
     }
 
     // Update and draw both motherships
@@ -1125,9 +1137,9 @@ function gameLoop(state) {
     state.ctx.fillStyle = "white";
     state.ctx.font = "20px Arial";
     state.ctx.textAlign = "left";
-    state.ctx.fillText(`Score: ${state.score}`, 10, 30);
+    state.ctx.fillText(`Очки: ${state.score}`, 10, 30);
     state.ctx.fillStyle = "white";
-    state.ctx.fillText(`Lives: ${state.lives}`, CANVAS_WIDTH - 80, 30);
+    state.ctx.fillText(`Жизни: ${state.lives}`, CANVAS_WIDTH - 110, 30);
 
     if (state.score >= state.bonusInterval) {
       state.score += 50;
@@ -1142,7 +1154,7 @@ function gameLoop(state) {
     state.ctx.font = "48px Arial";
     state.ctx.textAlign = "center";
     state.ctx.fillText(
-      allMotherShipsDestroyed ? "YOU SAVED EARTH!" : "GAME OVER",
+      allMotherShipsDestroyed ? "Вы спасли Землю!" : "Игра окончена",
       CANVAS_WIDTH / 2,
       CANVAS_HEIGHT / 2 - 20
     );
