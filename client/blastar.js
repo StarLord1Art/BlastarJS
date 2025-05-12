@@ -1,6 +1,6 @@
 // blastar.js
 
-const CANVAS_MARGIN = 100;
+const CANVAS_MARGIN = 110;
 const CANVAS_WIDTH = window.innerWidth - 4 * CANVAS_MARGIN;
 const CANVAS_HEIGHT = window.innerHeight - 2 * CANVAS_MARGIN;
 const GRAVITY = 0.05;
@@ -746,7 +746,7 @@ function setupUI(state) {
   state.restartButton.style.position = "absolute";
   state.restartButton.style.bottom = "140px";
   state.restartButton.style.padding = "10px 20px";
-  state.restartButton.style.marginLeft = "570px";
+  state.restartButton.style.marginLeft = "550px";
   state.restartButton.style.fontSize = "20px";
   state.restartButton.style.backgroundColor = "white";
   state.restartButton.style.color = "black";
@@ -758,7 +758,7 @@ function setupUI(state) {
   state.startButton.textContent = "Старт";
   state.startButton.style.position = "absolute";
   state.startButton.style.bottom = "140px";
-  state.startButton.style.marginLeft = "615px";
+  state.startButton.style.marginLeft = "590px";
   state.startButton.style.padding = "10px 20px";
   state.startButton.style.fontSize = "20px";
   state.startButton.style.backgroundColor = "white";
@@ -1162,9 +1162,6 @@ function gameLoop(state) {
           : "Игра окончена. Введите Ваше имя для сохранения результата:"
       );
       state.userNameAsked = true;
-
-      console.log(state.userName);
-      console.log(state.score);
 
       fetch("https://blastarjs-70.deno.dev/api/record", {
         method: "POST",

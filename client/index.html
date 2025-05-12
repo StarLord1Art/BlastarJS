@@ -85,13 +85,12 @@
         }).then(res => {
           if (res.status === 200) {
             res.json().then(data => {
-              console.log(data);
 
               const tableBody = document.getElementById('results-table');
               tableBody.innerHTML = '';
 
               data.forEach(element => {
-                if (Object.keys(element).length > 0) {
+                if (Object.keys(element).length > 0 && element.name) {
                   const row = document.createElement('tr');
                   row.innerHTML = `
                     <td>${element.name}</td>

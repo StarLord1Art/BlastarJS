@@ -252,6 +252,27 @@ nav ul li:hover::after {
     border: 1px solid #2a3b4d;
     position: relative;
     overflow: hidden;
+
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+}
+
+#game-results::-webkit-scrollbar {
+    width: 7px;
+}
+
+#game-results::-webkit-scrollbar-track {
+    background: #0d1520;
+    border-radius: 4px;
+}
+
+#game-results::-webkit-scrollbar-thumb {
+    background: #00c6ff;
+    border-radius: 4px;
+}
+
+#game-results::-webkit-scrollbar-thumb:hover {
+    background: #f9cb28; 
 }
 
 #game-results::before {
@@ -381,6 +402,7 @@ nav ul li:hover::after {
 
 .footer-bottom {
     position: fixed;
+    height: 40px;
     bottom: 0;
     left: 0;
     right: 0;
